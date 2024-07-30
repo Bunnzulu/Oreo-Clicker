@@ -130,12 +130,13 @@ class MiddleScreen:
         self.LegacyScreen.fill("chocolate4")
 
         #LegacyInfo
-        self.Legacy_TBH = Game_Font.render("To be Added", True, "White")
-        self.Ascend = pygame.Surface((85,44))
-        self.Ascend.fill((165,84,42))
-        self.Ascend_rect = self.Ascend.get_rect(topleft = self.LegacyScreen.topleft)
+        self.AscendCost_text = Game_Font.render(f"{OC["AscendCost"]*OC["AscendNum"]} to ascend", True, "White")
+        self.AscendCost_rect = self.AscendCost_text.get_rect(topleft = (678,195))
+        self.Ascend = pygame.Surface((100,44))
+        self.Ascend.fill("chocolate4")
+        self.Ascend_rect = self.Ascend.get_rect(topleft = (524,197))
         self.Ascend_text = Game_Font.render("Ascend", True, "White")
-        self.Ascend_text_rect = self.Ascend_text.get_rect(center = self.Ascend.center)
+        self.Ascend_text_rect = self.Ascend_text.get_rect(center = self.Ascend_rect.center)
 
         self.pressed = False
 
@@ -357,7 +358,20 @@ class MiddleScreen:
             SCREEN.blit(self.Legacy, self.Legacy_rect)
             SCREEN.blit(self.Legacy_text, self.Legacy_text_rect)
             SCREEN.blit(self.LegacyScreen, (404,101))
-            SCREEN.blit(self.Ascend, self.Ascend)
+            SCREEN.blit(self.Ascend, self.Ascend_rect)
+            SCREEN.blit(self.Ascend_text, self.Ascend_text_rect)
+            SCREEN.blit(self.AscendCost_text, self.AscendCost_rect)
+            mouse_pos = pygame.mouse.get_pos()
+            if self.Ascend_rect.collidepoint(mouse_pos):
+                self.Ascend.fill("Green")
+                if pygame.mouse.get_pressed()[0]: self.pressed = True
+                else:
+                    if self.pressed:
+                        if (OC["AscendCost"]*OC["AscendNum"]) < OC["Clicks"]:
+                            self.Ascend.fill((0,255,83))
+                        self.pressed = False
+            else:
+                self.Ascend.fill((165, 84, 42))
     
     def NumberShrink(self,Number,Display):
         Number = str(Number)
