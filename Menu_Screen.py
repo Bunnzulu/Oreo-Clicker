@@ -131,6 +131,11 @@ class MiddleScreen:
 
         #LegacyInfo
         self.Legacy_TBH = Game_Font.render("To be Added", True, "White")
+        self.Ascend = pygame.Surface((85,44))
+        self.Ascend.fill((165,84,42))
+        self.Ascend_rect = self.Ascend.get_rect(topleft = self.LegacyScreen.topleft)
+        self.Ascend_text = Game_Font.render("Ascend", True, "White")
+        self.Ascend_text_rect = self.Ascend_text.get_rect(center = self.Ascend.center)
 
         self.pressed = False
 
@@ -352,7 +357,7 @@ class MiddleScreen:
             SCREEN.blit(self.Legacy, self.Legacy_rect)
             SCREEN.blit(self.Legacy_text, self.Legacy_text_rect)
             SCREEN.blit(self.LegacyScreen, (404,101))
-            SCREEN.blit(self.Legacy_TBH, (450, 101))
+            SCREEN.blit(self.Ascend, self.Ascend)
     
     def NumberShrink(self,Number,Display):
         Number = str(Number)

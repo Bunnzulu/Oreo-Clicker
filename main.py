@@ -43,6 +43,7 @@ while True:
         if e.type == pygame.KEYDOWN:
             if e.key == pygame.K_LSHIFT or e.key == pygame.K_RSHIFT:
                 shop.Upgrades = not (shop.Upgrades)
+        if e.type == pygame.MOUSEBUTTONDOWN:print(e.pos)
     SCREEN.blit(BG1, BG1_Rect)
     SCREEN.blit(BG2, BG2_rect)
     SCREEN.blit(BG3, BG3_rect)
