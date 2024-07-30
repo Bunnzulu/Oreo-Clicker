@@ -130,7 +130,7 @@ class MiddleScreen:
         self.LegacyScreen.fill("chocolate4")
 
         #LegacyInfo
-        self.AscendCost_text = Game_Font.render(f"{OC["AscendCost"]*OC["AscendNum"]} to ascend", True, "White")
+        self.AscendCost_text = Game_Font.render(f"${OC["AscendCost"] * (1.5**OC["AscendNum"])} to ascend", True, "White")
         self.AscendCost_rect = self.AscendCost_text.get_rect(topleft = (678,195))
         self.Ascend = pygame.Surface((100,44))
         self.Ascend.fill("chocolate4")
@@ -353,6 +353,7 @@ class MiddleScreen:
             SCREEN.blit(self.Buy, (450,250))
     
     def LegacyInfo(self):
+        global OC
         if self.legacy:
             SCREEN.blit(self.bar, self.bar_rect)
             SCREEN.blit(self.Legacy, self.Legacy_rect)
@@ -367,7 +368,15 @@ class MiddleScreen:
                 if pygame.mouse.get_pressed()[0]: self.pressed = True
                 else:
                     if self.pressed:
-                        if (OC["AscendCost"]*OC["AscendNum"]) < OC["Clicks"]:
+                        if (OC["AscendCost"] * (1.5**OC["AscendNum"])) <= OC["Clicks"]:
+                            OC["AscendNum"] += 1
+                            x = OC["AscendNum"]
+                            OC = Ascend()
+                            print(Ascend())
+                            OC["AscendNum"] = x
+                            print("wot")
+                            try:os.remove("Cookie.txt")
+                            except: pass
                             self.Ascend.fill((0,255,83))
                         self.pressed = False
             else:
