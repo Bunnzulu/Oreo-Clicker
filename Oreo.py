@@ -17,19 +17,7 @@ OC = {"Clicks": 0, "HandMade":0,"AllClicks": 0,"ItemAmount":0, "Time":0,"Upgrade
 "ChanceMakerUpgrade10Cost":False,"ChanceMakerUpgrade11Cost":False,"ChanceMakerUpgrade12Cost":False,"ChanceMakerUpgrade13Cost":False,"FECost":310_000_000_000_000_000,"FEAmount":0,"FEX":1,"FEUpgradeCost":3_100_000_000_000_000_000, "FEUpgrade1Cost":False,"FEUpgrade2Cost":False,"FEUpgrade3Cost":False,"FEUpgrade4Cost":False,"FEUpgrade5Cost":False,"FEUpgrade6Cost":False,"FEUpgrade7Cost":False,"FEUpgrade8Cost":False,"FEUpgrade9Cost":False,"FEUpgrade10Cost":False,"FEUpgrade11Cost":False,"FEUpgrade12Cost":False,"FEUpgrade13Cost":False,"PCCost":71_000_000_000_000_000_000,"PCAmount":0,"PCX":1,"PCUpgradecost":710_000_000_000_000_000_000,"PCUpgrade1cost":False,"PCUpgrade2cost":False,"PCUpgrade3cost":False,"PCUpgrade4cost":False,"PCUpgrade5cost":False,"PCUpgrade6cost":False,
 "PCUpgrade7cost":False,"PCUpgrade8cost":False,"PCUpgrade9cost":False,"PCUpgrade10cost":False,"PCUpgrade11cost":False,"PCUpgrade12cost":False,"PCUpgrade13cost":False,"IVCost":12_000_000_000_000_000_000_000,"IVAmount":0,"IVX":1,"IVUpgradeCost":120_000_000_000_000_000_000_000,"IVUpgrade1Cost":False,"IVUpgrade2Cost":False,"IVUpgrade3Cost":False,"IVUpgrade4Cost":False,"IVUpgrade5Cost":False,"IVUpgrade6Cost":False,"IVUpgrade7Cost":False,"IVUpgrade8Cost":False,"IVUpgrade9Cost":False,"IVUpgrade10Cost":False,"IVUpgrade11Cost":False,"IVUpgrade12Cost":False,"IVUpgrade13Cost":False,"CBCost":1_900_000_000_000_000_000_000_000, "CBX":1,"CBAmount":0,"CBUpgradeCost":19_000_000_000_000_000_000_000_000,"CBUpgrade1Cost":False,"CBUpgrade2Cost":False,"CBUpgrade3Cost":False,"CBUpgrade4Cost":False,"CBUpgrade5Cost":False,"CBUpgrade6Cost":False,
 "CBUpgrade7Cost":False,"CBUpgrade8Cost":False,"CBUpgrade9Cost":False,"CBUpgrade10Cost":False,"CBUpgrade11Cost":False,"CBUpgrade12Cost":False,"CBUpgrade13Cost":False,"AscendCost":10,"AscendNum":0}
-Width,Height = 1362, 615
-SCREEN = pygame.display.set_mode((Width,Height))
-Game_Font = pygame.font.SysFont('arial', 30, False, False)
-BG1 = pygame.Surface((405,615))
-BG1.fill((165, 42, 42))
-BG1_Rect = BG1.get_rect(topleft = (0,0))
-try:
-    with open('Cookie.txt') as score_file: OC = json.load(score_file)
-except:pass
-
-def Ascend():
-    global OC
-    OC = {"Clicks": 0, "HandMade":0,"AllClicks": 0,"ItemAmount":0, "Time":0,"UpgradeAmount":0, "AMcost": 15,"Grandcost":100,"FarmAmount":0,"FarmCost":1100, "GrandAmount":0,"AMADD":False,"GrandmaUpgradecost":1000,"FarmX":1, "GrandX":1,"AMAmount":0,"AMADDER":0,"AMADDERX":1, "OPS":0, "ShopClicks":0, "AMX":1, "Autoupgrade":100,
+Old = {"Clicks": 0, "HandMade":0,"AllClicks": 0,"ItemAmount":0, "Time":0,"UpgradeAmount":0, "AMcost": 15,"Grandcost":100,"FarmAmount":0,"FarmCost":1100, "GrandAmount":0,"AMADD":False,"GrandmaUpgradecost":1000,"FarmX":1, "GrandX":1,"AMAmount":0,"AMADDER":0,"AMADDERX":1, "OPS":0, "ShopClicks":0, "AMX":1, "Autoupgrade":100,
 "grandmaupgrade1cost":False,"grandmaupgrade2cost":False,"grandmaupgrade3cost":False,"grandmaupgrade4cost":False,"grandmaupgrade5cost":False,"grandmaupgrade6cost":False,"grandmaupgrade7cost":False,"grandmaupgrade8cost":False,"grandmaupgrade9cost":False,"grandmaupgrade10cost":False,"grandmaupgrade11cost":False,"grandmaupgrade12cost":False,
 "grandmaupgrade13cost":False,"amupgrade1cost":False,"amupgrade2cost":False,"amupgrade3cost":False,"amupgrade4cost":False,"amupgrade5cost":False,"amupgrade6cost":False,"amupgrade7cost":False,"amupgrade8cost":False,"amupgrade9cost":False,"amupgrade10cost":False,"amupgrade11cost":False,"amupgrade12cost":False,"farmupgrade1cost":False,"farmupgrade2cost":False,
 "farmupgrade3cost":False,"farmupgrade4cost":False,"farmupgrade5cost":False,"farmupgrade6cost":False,"farmupgrade7cost":False,"farmupgrade8cost":False,"farmupgrade9cost":False,"farmupgrade10cost":False,"farmupgrade11cost":False,"farmupgrade12cost":False,"farmupgrade13cost":False,"Farmupgradecost":11000, "MineCost":12_000, "MineAmount":0,"MineX":1,
@@ -45,8 +33,20 @@ def Ascend():
 "PrismUpgrade1cost":False,"PrismUpgrade2cost":False,"PrismUpgrade3cost":False,"PrismUpgrade4cost":False,"PrismUpgrade5cost":False,"PrismUpgrade6cost":False,"PrismUpgrade7cost":False,"PrismUpgrade8cost":False,"PrismUpgrade9cost":False,"PrismUpgrade10cost":False,"PrismUpgrade11cost":False,"PrismUpgrade12cost":False,"PrismUpgrade13cost":False,"ChanceMakerX":1,"ChanceMakerCost":26_000_000_000_000_000, "ChanceMakerAmount":0, "ChanceMakerUpgradeCost":260_000_000_000_000_000_000,"ChanceMakerUpgrade1Cost":False,"ChanceMakerUpgrade2Cost":False,"ChanceMakerUpgrade3Cost":False,"ChanceMakerUpgrade4Cost":False,"ChanceMakerUpgrade5Cost":False,"ChanceMakerUpgrade6Cost":False,"ChanceMakerUpgrade7Cost":False,"ChanceMakerUpgrade8Cost":False,"ChanceMakerUpgrade9Cost":False,
 "ChanceMakerUpgrade10Cost":False,"ChanceMakerUpgrade11Cost":False,"ChanceMakerUpgrade12Cost":False,"ChanceMakerUpgrade13Cost":False,"FECost":310_000_000_000_000_000,"FEAmount":0,"FEX":1,"FEUpgradeCost":3_100_000_000_000_000_000, "FEUpgrade1Cost":False,"FEUpgrade2Cost":False,"FEUpgrade3Cost":False,"FEUpgrade4Cost":False,"FEUpgrade5Cost":False,"FEUpgrade6Cost":False,"FEUpgrade7Cost":False,"FEUpgrade8Cost":False,"FEUpgrade9Cost":False,"FEUpgrade10Cost":False,"FEUpgrade11Cost":False,"FEUpgrade12Cost":False,"FEUpgrade13Cost":False,"PCCost":71_000_000_000_000_000_000,"PCAmount":0,"PCX":1,"PCUpgradecost":710_000_000_000_000_000_000,"PCUpgrade1cost":False,"PCUpgrade2cost":False,"PCUpgrade3cost":False,"PCUpgrade4cost":False,"PCUpgrade5cost":False,"PCUpgrade6cost":False,
 "PCUpgrade7cost":False,"PCUpgrade8cost":False,"PCUpgrade9cost":False,"PCUpgrade10cost":False,"PCUpgrade11cost":False,"PCUpgrade12cost":False,"PCUpgrade13cost":False,"IVCost":12_000_000_000_000_000_000_000,"IVAmount":0,"IVX":1,"IVUpgradeCost":120_000_000_000_000_000_000_000,"IVUpgrade1Cost":False,"IVUpgrade2Cost":False,"IVUpgrade3Cost":False,"IVUpgrade4Cost":False,"IVUpgrade5Cost":False,"IVUpgrade6Cost":False,"IVUpgrade7Cost":False,"IVUpgrade8Cost":False,"IVUpgrade9Cost":False,"IVUpgrade10Cost":False,"IVUpgrade11Cost":False,"IVUpgrade12Cost":False,"IVUpgrade13Cost":False,"CBCost":1_900_000_000_000_000_000_000_000, "CBX":1,"CBAmount":0,"CBUpgradeCost":19_000_000_000_000_000_000_000_000,"CBUpgrade1Cost":False,"CBUpgrade2Cost":False,"CBUpgrade3Cost":False,"CBUpgrade4Cost":False,"CBUpgrade5Cost":False,"CBUpgrade6Cost":False,
-"CBUpgrade7Cost":False,"CBUpgrade8Cost":False,"CBUpgrade9Cost":False,"CBUpgrade10Cost":False,"CBUpgrade11Cost":False,"CBUpgrade12Cost":False,"CBUpgrade13Cost":False,"AscendCost":1_000_000,"AscendNum":0}
+"CBUpgrade7Cost":False,"CBUpgrade8Cost":False,"CBUpgrade9Cost":False,"CBUpgrade10Cost":False,"CBUpgrade11Cost":False,"CBUpgrade12Cost":False,"CBUpgrade13Cost":False,"AscendCost":10,"AscendNum":0}
 
+Width,Height = 1362, 615
+SCREEN = pygame.display.set_mode((Width,Height))
+Game_Font = pygame.font.SysFont('arial', 30, False, False)
+BG1 = pygame.Surface((405,615))
+BG1.fill((165, 42, 42))
+BG1_Rect = BG1.get_rect(topleft = (0,0))
+try:
+    with open('Cookie.txt') as score_file: OC = json.load(score_file)
+except:pass
+
+def Ascend():
+    for i in OC.keys():OC[i] = Old[i]
 
 class Cookie:
     def __init__(self):

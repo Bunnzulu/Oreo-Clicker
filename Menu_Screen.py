@@ -1,5 +1,6 @@
 import pygame, json, os
 from Oreo import *
+from math import ceil
 pygame.init()
 BG2 = pygame.Surface((637, 615))
 BG2.fill((159, 129, 112))
@@ -130,7 +131,7 @@ class MiddleScreen:
         self.LegacyScreen.fill("chocolate4")
 
         #LegacyInfo
-        self.AscendCost_text = Game_Font.render(f"${OC["AscendCost"] * (1.5**OC["AscendNum"])} to ascend", True, "White")
+        self.AscendCost_text = Game_Font.render(f"${ceil(OC["AscendCost"] * (1.5**OC["AscendNum"]))} to ascend", True, "White")
         self.AscendCost_rect = self.AscendCost_text.get_rect(topleft = (678,195))
         self.Ascend = pygame.Surface((100,44))
         self.Ascend.fill("chocolate4")
@@ -159,7 +160,6 @@ class MiddleScreen:
         self.InfoInfo()
         self.Check_click_Legacy()
         self.LegacyInfo()
-        Ascend()
     
     def Check_click_Options(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -369,11 +369,13 @@ class MiddleScreen:
                 if pygame.mouse.get_pressed()[0]: self.pressed = True
                 else:
                     if self.pressed:
-                        if (OC["AscendCost"] * (1.5**OC["AscendNum"])) <= OC["Clicks"]:
+                        if ceil(OC["AscendCost"] * (1.5**OC["AscendNum"])) <= OC["Clicks"]:
                             OC["AscendNum"] += 1
-                            x = OC["AscendNum"]
+                            x = OC["AscendNum"]                           
                             Ascend()
                             OC["AscendNum"] = x
+                            self.AscendCost_text = Game_Font.render(f"${ceil(OC["AscendCost"] * (1.5**OC["AscendNum"]))} to ascend", True, "White")
+                            self.AscendCost_rect = self.AscendCost_text.get_rect(topleft = (678,195))
                             try:os.remove("Cookie.txt")
                             except: pass
                             self.Ascend.fill((0,255,83))
