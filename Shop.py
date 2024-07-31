@@ -671,6 +671,7 @@ class Upgrades:
         self.CC_CB()
         self.Display()
         self.ShopUpgrades()
+        Ascend()
     
     def Check_click_Buy(self):
         mouse_pos = pygame.mouse.get_pos()

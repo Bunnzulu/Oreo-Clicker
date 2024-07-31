@@ -159,6 +159,7 @@ class MiddleScreen:
         self.InfoInfo()
         self.Check_click_Legacy()
         self.LegacyInfo()
+        Ascend()
     
     def Check_click_Options(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -371,10 +372,8 @@ class MiddleScreen:
                         if (OC["AscendCost"] * (1.5**OC["AscendNum"])) <= OC["Clicks"]:
                             OC["AscendNum"] += 1
                             x = OC["AscendNum"]
-                            OC = Ascend()
-                            print(Ascend())
+                            Ascend()
                             OC["AscendNum"] = x
-                            print("wot")
                             try:os.remove("Cookie.txt")
                             except: pass
                             self.Ascend.fill((0,255,83))
