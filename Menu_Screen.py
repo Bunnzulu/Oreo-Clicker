@@ -138,6 +138,8 @@ class MiddleScreen:
         self.Ascend_rect = self.Ascend.get_rect(topleft = (524,197))
         self.Ascend_text = Game_Font.render("Ascend", True, "White")
         self.Ascend_text_rect = self.Ascend_text.get_rect(center = self.Ascend_rect.center)
+        self.Ascend_desc = Game_Font.render(r"Gain a 3% increase of cookies with each ascend", True, "White")
+        self.Ascend_desc_rect = self.Ascend_desc.get_rect(topleft = (500,250))
 
         self.pressed = False
 
@@ -244,7 +246,7 @@ class MiddleScreen:
                 else:
                     if self.pressed:
                         with open('Cookie.txt', 'w') as score_file:
-                            json.dump(OC,score_file) #First is the data we want to store, second is the file we want to store it 
+                            json.dump(OC,score_file)
                             self.OptionButton1.fill((0,255,83))
                             self.pressed = False
             else:
@@ -256,6 +258,7 @@ class MiddleScreen:
                     if self.pressed:
                         try:os.remove("Cookie.txt")
                         except: pass
+                        Reset()
                         self.pressed = False
 
     def StatsInfo(self):
@@ -363,6 +366,7 @@ class MiddleScreen:
             SCREEN.blit(self.Ascend, self.Ascend_rect)
             SCREEN.blit(self.Ascend_text, self.Ascend_text_rect)
             SCREEN.blit(self.AscendCost_text, self.AscendCost_rect)
+            SCREEN.blit(self.Ascend_desc,self.Ascend_desc_rect)
             mouse_pos = pygame.mouse.get_pos()
             if self.Ascend_rect.collidepoint(mouse_pos):
                 self.Ascend.fill("Green")
@@ -372,7 +376,7 @@ class MiddleScreen:
                         if ceil(OC["AscendCost"] * (1.5**OC["AscendNum"])) <= OC["Clicks"]:
                             OC["AscendNum"] += 1
                             x = OC["AscendNum"]                           
-                            Ascend()
+                            Reset()
                             OC["AscendNum"] = x
                             self.AscendCost_text = Game_Font.render(f"${ceil(OC["AscendCost"] * (1.5**OC["AscendNum"]))} to ascend", True, "White")
                             self.AscendCost_rect = self.AscendCost_text.get_rect(topleft = (678,195))

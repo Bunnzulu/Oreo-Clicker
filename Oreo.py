@@ -45,7 +45,7 @@ try:
     with open('Cookie.txt') as score_file: OC = json.load(score_file)
 except:pass
 
-def Ascend():
+def Reset():
     for i in OC.keys():OC[i] = Old[i]
 
 class Cookie:
@@ -65,7 +65,7 @@ class Cookie:
     def Draw(self):
         BG1.blit(self.image,self.rect)
         self.ClicksDisplay = self.NumberShrink(OC['Clicks'], self.ClicksDisplay)
-        SCREEN.blit(self.Toptext, self.Toptext_rect) #So the text wont be overlapping when clicked
+        SCREEN.blit(self.Toptext, self.Toptext_rect)
         SCREEN.blit(self.Bottomtext, self.Bottomtext_rect)
         if OC["AMADD"]: OC['OPS'] = (0.1*float(OC['AMX']) + (OC['AMADDER']*OC['AMADDERX'])*OC['AMAmount']) + ((1*float(OC['GrandX'])) * OC['GrandAmount']) + (8*float(OC['FarmX'])* OC['FarmAmount']) + (47*float(OC['MineX'])* OC['MineAmount']) + (260*float(OC['FactoryX'])*OC['FactoryAmount']) + (1400*float(OC['BankX']) * OC['BankAmount']) + (7800*float(OC['TempleX']) *OC['TempleAmount']) + (44_000*float(OC['WizardTowerX'])*OC['WizardTowerAmount']) + (260_000*float(OC['ShipmentX'])*OC['ShipmentAmount']) + ((1_600_000*float(OC['ALX']))*OC['ALAmount']) + ((10_000_000*float(OC['PortalX']))*OC['PortalAmount']) + ((430_000_000*float(OC['ACX']))*OC['ACAmount']) + ((65_000_000*float(OC['TMX']))*OC['TMAmount']) + ((2_900_000_000* OC['PrismX'])*OC['PrismAmount']) + ((21_000_000_000*OC["ChanceMakerX"])*OC['ChanceMakerAmount']) + ((150_000_000_000* OC['FEX'])*OC['FEAmount']) + ((1_100_000_000_000*OC['PCX'])*OC['PCAmount']) + ((8_300_000_000_000*OC['IVX'])*OC['IVAmount']) + ((64_000_000_000_000*OC['CBX'])*OC['CBAmount'])
         elif not OC["AMADD"]: OC['OPS'] = (0.1*float(OC['AMX'])*OC['AMAmount']) + ((1*float(OC['GrandX'])) * OC['GrandAmount']) + (8*float(OC['FarmX'])* OC['FarmAmount']) + (47*float(OC['MineX'])* OC['MineAmount']) + (260*float(OC['FactoryX'])*OC['FactoryAmount']) + (1400*float(OC['BankX']) * OC['BankAmount']) + (7800*float(OC['TempleX']) *OC['TempleAmount']) + (44_000*float(OC['WizardTowerX'])*OC['WizardTowerAmount']) + (260_000*float(OC['ShipmentX'])*OC['ShipmentAmount']) + ((1_600_000*float(OC['ALX']))*OC['ALAmount']) + ((10_000_000*float(OC['PortalX']))*OC['PortalAmount']) + ((430_000_000*float(OC['ACX']))*OC['ACAmount']) + ((65_000_000*float(OC['TMX']))*OC['TMAmount']) + ((2_900_000_000* OC['PrismX'])*OC['PrismAmount']) + ((21_000_000_000*OC["ChanceMakerX"])*OC['ChanceMakerAmount']) + ((150_000_000_000* OC['FEX'])*OC['FEAmount']) + ((1_100_000_000_000*OC['PCX'])*OC['PCAmount']) + ((8_300_000_000_000*OC['IVX'])*OC['IVAmount']) + ((64_000_000_000_000*OC['CBX'])*OC['CBAmount'])

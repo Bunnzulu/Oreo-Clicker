@@ -1072,7 +1072,6 @@ class Upgrades:
                         OC["AMADD"] = True
                         OC["amupgrade3cost"] = True
                         OC["amupgrade2cost"] = False
-                        print("Done")
                     elif OC["Autoupgrade"] == 10_000_000 and OC["Clicks"] >= OC["Autoupgrade"]:
                         OC["Clicks"] -= OC["Autoupgrade"]
                         OC["UpgradeAmount"] += 1
@@ -1205,8 +1204,10 @@ class Upgrades:
     def AMFunc(self):
         if OC["AMAmount"]:
             for _ in range(OC["AMAmount"]):
-                if OC["AMADD"]: self.AutoCount += (1*OC["AMX"]) + (OC["AMADDER"]*OC["AMADDERX"])
-                elif not OC["AMADD"]: self.AutoCount += (1*OC["AMX"])
+                if OC["AMADD"]: self.AutoCount += ((1*OC["AMX"]) + (OC["AMADDER"]*OC["AMADDERX"])) * (1.3**OC["AscendNum"])
+                elif not OC["AMADD"]: self.AutoCount += (1*OC["AMX"]) * (1.3**OC["AscendNum"])
+                self.AutoCount = round(self.AutoCount)
+            for i in range(0,self.AutoCount + 1, 10):
                 if self.AutoCount >= 10:
                     OC["Clicks"] += 1
                     OC["AllClicks"] += 1
@@ -1271,7 +1272,9 @@ class Upgrades:
     def GrandmaFunc(self):
         if OC["GrandAmount"]:
             for _ in range(OC["GrandAmount"]):
-                self.Grandcount += (10*OC["GrandX"])
+                self.Grandcount += (10*OC["GrandX"]) * (1.3**OC["AscendNum"])
+                self.Grandcount = round(self.Grandcount)
+            for i in range(0,self.Grandcount + 1, 10):
                 if self.Grandcount >= 10:
                     OC["Clicks"] += 1
                     OC["AllClicks"] += 1
@@ -1281,13 +1284,14 @@ class Upgrades:
     def FarmFunc(self):
         if OC["FarmAmount"]:
             for _ in range(OC["FarmAmount"]):
-                self.FarmCount += (80*OC["FarmX"])
-                for i in range(0,self.FarmCount + 1, 10):
-                    if self.FarmCount >= 10:
-                        OC["Clicks"] += 1
-                        OC["AllClicks"] += 1
-                        OC['ShopClicks'] += 1
-                        self.FarmCount -= 10
+                self.FarmCount += (80*OC["FarmX"]) * (1.3**OC["AscendNum"])
+                self.FarmCount = round(self.FarmCount)
+            for i in range(0,self.FarmCount + 1, 10):
+                if self.FarmCount >= 10:
+                    OC["Clicks"] += 1
+                    OC["AllClicks"] += 1
+                    OC['ShopClicks'] += 1
+                    self.FarmCount -= 10
                     
     def GrandmaUpgrade(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -1543,13 +1547,14 @@ class Upgrades:
     def MineFunc(self):
         if OC["MineAmount"]:
             for _ in range(OC["MineAmount"]):
-                self.MineCount += (470*OC["FarmX"])
-                for i in range(0,self.MineCount + 1, 10):
-                    if self.MineCount >= 10:
-                        OC["Clicks"] += 1
-                        OC["AllClicks"] += 1
-                        OC['ShopClicks'] += 1
-                        self.MineCount -= 10
+                self.MineCount += (470*OC["FarmX"]) * (1.3**OC["AscendNum"])
+                self.MineCount = round(self.MineCount)
+            for i in range(0,self.MineCount + 1, 10):
+                if self.MineCount >= 10:
+                    OC["Clicks"] += 1
+                    OC["AllClicks"] += 1
+                    OC['ShopClicks'] += 1
+                    self.MineCount -= 10
 
     def MineUpgrade(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -1678,13 +1683,14 @@ class Upgrades:
     def FactoryFunc(self):
         if OC["FactoryAmount"]:
             for _ in range(OC["FactoryAmount"]):
-                self.FactoryCount += (2600*OC["FactoryX"])
-                for i in range(0,self.FactoryCount + 1, 10):
-                    if self.FactoryCount >= 10:
-                        OC["Clicks"] += 1
-                        OC["AllClicks"] += 1
-                        OC['ShopClicks'] += 1
-                        self.FactoryCount -= 10
+                self.FactoryCount += (2600*OC["FactoryX"]) * (1.3**OC["AscendNum"])
+                self.FactoryCount = round(self.FactoryCount)
+            for i in range(0,self.FactoryCount + 1, 10):
+                if self.FactoryCount >= 10:
+                    OC["Clicks"] += 1
+                    OC["AllClicks"] += 1
+                    OC['ShopClicks'] += 1
+                    self.FactoryCount -= 10
 
     def FactoryUpgrade(self):
       mouse_pos = pygame.mouse.get_pos()
@@ -1813,13 +1819,14 @@ class Upgrades:
     def BankFunc(self):
         if OC["BankAmount"]:
             for _ in range(OC["BankAmount"]):
-                self.BankCount += (1_4000*OC["BankX"])
-                for i in range(0,self.BankCount + 1, 10):
-                    if self.BankCount >= 10:
-                        OC["Clicks"] += 1
-                        OC["AllClicks"] += 1
-                        OC['ShopClicks'] += 1
-                        self.BankCount -= 10
+                self.BankCount += (1_4000*OC["BankX"]) * (1.3**OC["AscendNum"])
+                self.BankCount = round(self.BankCount)
+            for i in range(0,self.BankCount + 1, 10):
+                if self.BankCount >= 10:
+                    OC["Clicks"] += 1
+                    OC["AllClicks"] += 1
+                    OC['ShopClicks'] += 1
+                    self.BankCount -= 10
 
     def BankUpgrade(self): 
         mouse_pos = pygame.mouse.get_pos()
@@ -1949,8 +1956,9 @@ class Upgrades:
 
     def TempleFunc(self):
         if OC["TempleAmount"]:
-            for _ in range(OC["TempleAmount"]):
-                self.TempleCount += (78000 * OC["TempleX"])
+            for _ in range(OC["TempleTempleCountAmount"]):
+                self.TempleCount += (78000 * OC["TempleX"]) * (1.3**OC["AscendNum"])
+                self.TempleCount = round(self.TempleCount)
             for i in range(0,self.TempleCount + 1, 10):
                 if self.TempleCount >= 10:
                     OC["Clicks"] += 1
@@ -2085,7 +2093,8 @@ class Upgrades:
     def WTFunc(self):
         if OC["WizardTowerAmount"]:
             for _ in range(OC["WizardTowerAmount"]):
-                self.WTCount += (44_0000 * OC["WizardTowerX"])
+                self.WTCount += (44_0000 * OC["WizardTowerX"]) * (1.3**OC["AscendNum"])
+                self.WTCount = round(self.WTCount)
             for i in range(0,self.WTCount + 1, 10):
                 if self.WTCount >= 10:
                     OC["Clicks"] += 1
@@ -2220,7 +2229,8 @@ class Upgrades:
     def ShipmentFunc(self):
         if OC["ShipmentAmount"]:
             for _ in range(OC["ShipmentAmount"]):
-                self.ShipmentCount += (260_0000 * OC["ShipmentX"])
+                self.ShipmentCount += (260_0000 * OC["ShipmentX"]) * (1.3**OC["AscendNum"])
+                self.ShipmentCount = round(self.ShipmentCount)
             for i in range(0,self.ShipmentCount + 1, 10):
                 if self.ShipmentCount >= 10:
                     OC["Clicks"] += 1
@@ -2355,7 +2365,8 @@ class Upgrades:
     def ALFunc(self):
         if OC["ALAmount"]:
             for _ in range(OC["ALAmount"]):
-                self.ALCount += (1_600_0000 * OC["ALX"])
+                self.ALCount += (1_600_0000 * OC["ALX"]) * (1.3**OC["AscendNum"])
+                self.ALCount = round(self.ALCount)
             for i in range(0,self.ALCount + 1, 10):
                 if self.ALCount >= 10:
                     OC["Clicks"] += 1
@@ -2489,7 +2500,8 @@ class Upgrades:
     def PortalFunc(self):
         if OC["PortalAmount"]:
             for _ in range(OC["PortalAmount"]):
-                self.PortalCount += (10_000_0000 * OC["PortalX"])
+                self.PortalCount += (10_000_0000 * OC["PortalX"]) * (1.3**OC["AscendNum"])
+                self.PortalCount = round(self.PortalCount)
             for i in range(0,self.PortalCount + 1, 10):
                 if self.PortalCount >= 10:
                     OC["Clicks"] += 1
@@ -2624,7 +2636,8 @@ class Upgrades:
     def TMFunc(self):
         if OC["TMAmount"]:
             for _ in range(OC["TMAmount"]):
-                self.TMCount += (65_000_0000 * OC["TMX"])
+                self.TMCount += (65_000_0000 * OC["TMX"]) * (1.3**OC["AscendNum"])
+                self.TMCount = round(self.TMCount)
             for i in range(0,self.TMCount + 1, 10):
                 if self.TMCount >= 10:
                     OC["Clicks"] += 1
@@ -2759,7 +2772,8 @@ class Upgrades:
     def ACFunc(self):
         if OC["ACAmount"]:
             for _ in range(OC["ACAmount"]):
-                self.ACCount += (430_000_0000 * OC["ACX"])
+                self.ACCount += (430_000_0000 * OC["ACX"]) * (1.3**OC["AscendNum"])
+                self.ACCount = round(self.ACCount)
             for i in range(0,self.ACCount + 1, 10):
                 if self.ACCount >= 10:
                     OC["Clicks"] += 1
@@ -2893,7 +2907,8 @@ class Upgrades:
     def PrismFunc(self):
         if OC['PrismAmount']:
             for _ in range(OC['PrismAmount']):
-                self.PrismCount += (2_900_000_0000 * OC["PrismX"])
+                self.PrismCount += (2_900_000_0000 * OC["PrismX"]) * (1.3**OC["AscendNum"])
+                self.PrismCount = round(self.PrismCount)
             for i in range(0,self.PrismCount + 1, 10):
                 if self.PrismCount >= 10:
                     OC["Clicks"] += 1
@@ -3027,7 +3042,8 @@ class Upgrades:
     def ChanceMakerFunc(self):
         if OC['ChanceMakerAmount']:
             for _ in range(OC['ChanceMakerAmount']):
-                self.ChanceMakerCount += (21_000_000_0000 * OC["ChanceMakerX"])
+                self.ChanceMakerCount += (21_000_000_0000 * OC["ChanceMakerX"]) * (1.3**OC["AscendNum"])
+                self.ChanceMakerCount = round(self.ChanceMakerCount)
             for i in range(0,self.ChanceMakerCount + 1, 10):
                 if self.ChanceMakerCount >= 10:
                     OC["Clicks"] += 1
@@ -3162,7 +3178,8 @@ class Upgrades:
     def FEFunc(self):
         if OC['FEAmount']:
             for _ in range(OC['FEAmount']):
-                self.FECount += (150_000_000_0000 * OC["FEX"])
+                self.FECount += (150_000_000_0000 * OC["FEX"]) * (1.3**OC["AscendNum"])
+                self.FECount = round(self.FECount)
             for i in range(0,self.FECount + 1, 10):
                 if self.FECount >= 10:
                     OC["Clicks"] += 1
@@ -3297,7 +3314,8 @@ class Upgrades:
     def PCFunc(self):
         if OC['PCAmount']:
             for _ in range(OC['PCAmount']):
-                self.PCCount += (1_100_000_000_0000 * OC["PCX"])
+                self.PCCount += (1_100_000_000_0000 * OC["PCX"]) * (1.3**OC["AscendNum"])
+                self.PCCount = round(self.PCCount)
             for i in range(0,self.PCCount + 1, 10):
                 if self.PCCount >= 10:
                     OC["Clicks"] += 1
@@ -3432,7 +3450,8 @@ class Upgrades:
     def IVFunc(self):
         if OC['IVAmount']:
             for _ in range(OC['IVAmount']):
-                self.IVCount += (8_300_000_000_0000 * OC["IVX"])
+                self.IVCount += (8_300_000_000_0000 * OC["IVX"]) * (1.3**OC["AscendNum"])
+                self.IVCount = round(self.IVCount)
             for i in range(0,self.IVCount + 1, 10):
                 if self.IVCount >= 10:
                     OC["Clicks"] += 1
@@ -3566,7 +3585,8 @@ class Upgrades:
     def CBFunc(self):
         if OC['CBAmount']:
             for _ in range(OC['CBAmount']):
-                self.CBCount += (64_000_000_000_0000 * OC["CBX"])
+                self.CBCount += (64_000_000_000_0000 * OC["CBX"]) * (1.3**OC["AscendNum"])
+                self.CBCount = round(self.CBCount)
             for i in range(0,self.CBCount + 1, 10):
                 if self.CBCount >= 10:
                     OC["Clicks"] += 1
@@ -3613,7 +3633,6 @@ class Upgrades:
                         elif OC["CBUpgradeCost"] == 9_500_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000_000:
                             OC["CBUpgrade12Cost"],OC["CBUpgradeCost"] = False,"Done";self.CBUpgradeCost = "Done"
                     self.pressed = False
-    
     
     def CBUpgrade_req(self):
         if OC["CBUpgrade1Cost"]:
